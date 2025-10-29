@@ -126,7 +126,7 @@ app.post('/api/seed', async (req, res) => {
       "description": "Curated small-group experience. Certified guide. Safety first with gear included.",
       "about": "Scenic routes, trained guides, and safety briefing. Minimum age 10. A 2-hour guided tour.",
       "basePrice": 999,
-      "imageUrl": "https://images.unsplash.com/photo-1519331393605-649e79a00b8e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+      "imageUrl": "/kayaking.jpeg",
       "slots": [
         { "date": "Oct 28", "time": "07:00 am", "remaining": 10 },
         { "date": "Oct 28", "time": "09:00 am", "remaining": 2 },
@@ -142,7 +142,7 @@ app.post('/api/seed', async (req, res) => {
       "description": "Witness the breathtaking sunrise from the peak of Nandi Hills. A classic Bangalore escape.",
       "about": "Early morning pickup, guided trek to the viewpoint, and light breakfast included. 3-hour experience.",
       "basePrice": 899,
-      "imageUrl": "https://images.unsplash.com/photo-1588665806653-81b480f28f45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+      "imageUrl": "/nandi_hills.jpeg",
       "slots": [
         { "date": "Oct 28", "time": "04:00 am", "remaining": 20 },
         { "date": "Oct 29", "time": "04:00 am", "remaining": 15 },
@@ -156,7 +156,7 @@ app.post('/api/seed', async (req, res) => {
       "description": "Walk through lush coffee estates, learn about bean-to-cup, and enjoy fresh-brewed coffee.",
       "about": "A 90-minute walking tour with a local guide. Learn to pick coffee cherries (seasonal).",
       "basePrice": 1299,
-      "imageUrl": "https://images.unsplash.com/photo-1507133750040-6a8f5708b1de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+      "imageUrl": "/coorg.jpeg",
       "slots": [
         { "date": "Oct 28", "time": "10:00 am", "remaining": 8 },
         { "date": "Oct 28", "time": "02:00 pm", "remaining": 6 },
@@ -169,7 +169,7 @@ app.post('/api/seed', async (req, res) => {
       "description": "Explore the dense Sunderban mangroves and spot local wildlife from a safe boat.",
       "about": "Full-day trip with a guide, safety gear, and packed lunch. Chance to see crocodiles and birds.",
       "basePrice": 1999,
-      "imageUrl": "https://images.unsplash.com/photo-1542385150-32b0c164f940?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+      "imageUrl": "/backwaters.jpeg",
       "slots": [
         { "date": "Oct 30", "time": "08:00 am", "remaining": 10 },
         { "date": "Oct 31", "time": "08:00 am", "remaining": 10 }
@@ -181,7 +181,7 @@ app.post('/api/seed', async (req, res) => {
       "description": "Experience the ultimate thrill with a giant leap from a platform over the Himalayas.",
       "about": "Certified instructors and top-quality safety equipment. Must be over 18. Weight limits apply.",
       "basePrice": 3500,
-      "imageUrl": "https://images.unsplash.com/photo-1533230403302-39f9393116d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+      "imageUrl": "/bungjee.jpeg",
       "slots": [
         { "date": "Oct 28", "time": "10:00 am", "remaining": 5 },
         { "date": "Oct 28", "time": "11:00 am", "remaining": 3 },
@@ -195,7 +195,7 @@ app.post('/api/seed', async (req, res) => {
       "description": "A serene kayaking experience through a submerged forest. Perfect for nature lovers.",
       "about": "Located near Udupi. All gear provided. Guide will accompany the group. 2-hour slot.",
       "basePrice": 999,
-      "imageUrl": "https://images.unsplash.com/photo-1582221633519-c5630353c9b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+      "imageUrl": "/forest.jpeg",
       "slots": [
         { "date": "Oct 28", "time": "08:00 am", "remaining": 10 },
         { "date": "Oct 29", "time": "08:00 am", "remaining": 10 }
@@ -207,7 +207,7 @@ app.post('/api/seed', async (req, res) => {
       "description": "Discover the underwater world with a PADI-certified instructor. No prior experience needed.",
       "about": "Includes 30 minutes of training and 45 minutes of diving. All equipment provided.",
       "basePrice": 2500,
-      "imageUrl": "https://images.unsplash.com/photo-1580520194436-235081d6013a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+      "imageUrl": "/scuba.jpeg",
       "slots": [
         { "date": "Oct 30", "time": "09:00 am", "remaining": 6 },
         { "date": "Oct 30", "time": "12:00 pm", "remaining": 4 },
@@ -220,7 +220,7 @@ app.post('/api/seed', async (req, res) => {
       "description": "Tackle the thrilling rapids of the Ganges. An adventure you won't forget!",
       "about": "16km rafting route with Grade III rapids. Includes cliff jumping. All safety gear provided.",
       "basePrice": 1600,
-      "imageUrl": "https://images.unsplash.com/photo-1560942475-101a5d11b38f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+      "imageUrl": "/river.jpeg",
       "slots": [
         { "date": "Oct 28", "time": "09:00 am", "remaining": 0 },
         { "date": "Oct 29", "time": "09:00 am", "remaining": 12 },
