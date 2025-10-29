@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-// Use built-in fetch to avoid adding axios as a dependency
+import React, { useState, useEffect, useMemo } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import ExperienceCard from '../components/ExperienceCard';
@@ -17,31 +17,47 @@ type Experience = {
 const HomePage: React.FC = () => {
   const [experiences, setExperiences] = useState<Experience[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  
+  // --- NEW: State for the search query ---
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchExperiences = async () => {
       try {
-        // Fetch data from your backend
-        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/experiences`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = (await res.json()) as Experience[];
-        setExperiences(data);
-        setError(null);
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/experiences`);
+        setExperiences(res.data);
       } catch (err) {
         console.error('Error fetching experiences:', err);
-        setError((err as Error)?.message ?? 'Failed to fetch experiences');
       } finally {
         setLoading(false);
       }
     };
     fetchExperiences();
-  }, []); // Empty dependency array means this runs once on mount
+  }, []);
+
+  // --- NEW: Filter logic ---
+  // This calculates the filtered list every time 'experiences' or 'searchQuery' changes
+  const filteredExperiences = useMemo(() => {
+    if (!searchQuery) {
+      return experiences; // If search is empty, return all
+    }
+    
+    return experiences.filter(exp => 
+      exp.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      exp.location.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [experiences, searchQuery]);
+
+  // --- NEW: Handler for the search input ---
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
 
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <Header />
+        {/* Pass empty state to header on loading page */}
+        <Header searchQuery="" onSearchChange={() => {}} />
         <main className="max-w-7xl mx-auto py-8 px-4 text-center">
           <p className="text-lg">Loading experiences...</p>
         </main>
@@ -49,49 +65,20 @@ const HomePage: React.FC = () => {
     )
   }
 
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gray-50">
-        <Header />
-        <main className="max-w-7xl mx-auto py-8 px-4 text-center">
-          <h1 className="text-2xl font-bold">Unable to load experiences</h1>
-          <p className="mt-4 text-gray-600">{error}</p>
-          <div className="mt-6">
-            <button
-              onClick={() => {
-                setLoading(true);
-                setError(null);
-                // Retry fetch
-                (async () => {
-                  try {
-                    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/experiences`);
-                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                    const data = (await res.json()) as Experience[];
-                    setExperiences(data);
-                  } catch (e) {
-                    setError((e as Error)?.message ?? 'Failed to fetch experiences');
-                  } finally {
-                    setLoading(false);
-                  }
-                })();
-              }}
-              className="mt-2 inline-flex items-center bg-yellow-400 text-gray-900 font-bold py-2 px-4 rounded"
-            >
-              Retry
-            </button>
-          </div>
-        </main>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      {/* --- UPDATED: Pass state and handler to Header --- */}
+      <Header 
+        searchQuery={searchQuery}
+        onSearchChange={handleSearchChange}
+      />
+      
       <main className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         {/* Responsive Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {experiences.map((exp) => (
+          
+          {/* --- UPDATED: Map over the filtered list --- */}
+          {filteredExperiences.map((exp) => (
             <Link to={`/details/${exp._id}`} key={exp._id}>
               <ExperienceCard
                 title={exp.title}
@@ -103,6 +90,14 @@ const HomePage: React.FC = () => {
             </Link>
           ))}
         </div>
+
+        {/* --- NEW: Show a message if no results are found --- */}
+        {!loading && filteredExperiences.length === 0 && (
+          <div className="text-center py-12">
+            <h2 className="text-2xl font-semibold text-gray-700">No experiences found</h2>
+            <p className="text-gray-500 mt-2">Try adjusting your search terms.</p>
+          </div>
+        )}
       </main>
     </div>
   );
