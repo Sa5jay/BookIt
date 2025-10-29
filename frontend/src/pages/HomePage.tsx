@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
     const fetchExperiences = async () => {
       try {
         // Fetch data from your backend
-        const res = await fetch('http://localhost:5000/api/experiences');
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/experiences`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = (await res.json()) as Experience[];
         setExperiences(data);
@@ -64,7 +64,7 @@ const HomePage: React.FC = () => {
                 // Retry fetch
                 (async () => {
                   try {
-                    const res = await fetch('http://localhost:5000/api/experiences');
+                    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/experiences`);
                     if (!res.ok) throw new Error(`HTTP ${res.status}`);
                     const data = (await res.json()) as Experience[];
                     setExperiences(data);

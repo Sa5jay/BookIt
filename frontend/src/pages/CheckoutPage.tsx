@@ -69,7 +69,7 @@ const CheckoutPage: React.FC = () => {
     
     // 3. --- Call API (POST /bookings) ---
     try {
-      const response = await fetch('http://localhost:5000/api/bookings', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/bookings`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(bookingDetails),
@@ -91,7 +91,7 @@ const CheckoutPage: React.FC = () => {
   
   const handleApplyPromo = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/promo/validate', {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/promo/validate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ promoCode }),

@@ -32,7 +32,7 @@ const DetailsPage: React.FC = () => {
   useEffect(() => {
     const fetchExperience = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/experiences/${id}`);
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/experiences/${id}`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = (await res.json()) as Experience;
         setExperience(data);
