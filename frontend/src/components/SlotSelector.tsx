@@ -34,7 +34,7 @@ const SlotSelector: React.FC<SlotSelectorProps> = ({
   // Helper to get the correct style for a time slot
   const getTimeSlotClass = (slot: Slot) => {
     const baseClass =
-      'border rounded-md py-2 px-4 text-sm font-medium transition-all';
+      'border rounded-md py-2 px-4 text-sm sm:text-base font-medium transition-all';
 
     if (slot.remaining === 0) {
       return `${baseClass} bg-gray-200 text-gray-400 cursor-not-allowed`;

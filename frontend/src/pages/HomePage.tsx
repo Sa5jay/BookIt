@@ -75,11 +75,11 @@ const HomePage: React.FC = () => {
       
       <main className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         {/* Responsive Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           
           {/* --- UPDATED: Map over the filtered list --- */}
           {filteredExperiences.map((exp) => (
-            <Link to={`/details/${exp._id}`} key={exp._id}>
+            <Link to={`/details/${exp._id}`} key={exp._id} className="block h-full">
               <ExperienceCard
                 title={exp.title}
                 location={exp.location}

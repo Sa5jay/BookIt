@@ -109,7 +109,7 @@ const DetailsPage: React.FC = () => {
             <img
               src={experience.imageUrl}
               alt={experience.title}
-              className="w-full h-96 object-cover rounded-lg shadow-md"
+              className="w-full h-64 sm:h-80 lg:h-96 object-cover rounded-lg shadow-md"
             />
             <h1 className="text-4xl font-bold">{experience.title}</h1>
             <p className="text-gray-700 text-lg">{experience.description}</p>

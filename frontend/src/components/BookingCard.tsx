@@ -1,7 +1,7 @@
 import React from 'react';
 import { Minus, Plus } from 'lucide-react';
 
-// Define the component's props
+
 type BookingCardProps = {
   basePrice: number;
   quantity: number;
@@ -25,15 +25,14 @@ const BookingCard: React.FC<BookingCardProps> = ({
   const handleDecrement = () => onQuantityChange(Math.max(1, quantity - 1));
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 sticky top-8">
-      {/* Price Info */}
+    <div className="bg-white shadow-lg rounded-lg p-6 lg:sticky lg:top-8">
+
       <div className="space-y-4">
         <div className="flex justify-between items-center">
           <span className="text-gray-600">Starts at</span>
           <span className="font-semibold text-lg">₹{basePrice}</span>
         </div>
 
-        {/* Quantity Selector */}
         <div className="flex justify-between items-center">
           <span className="text-gray-600">Quantity</span>
           <div className="flex items-center space-x-3">
@@ -56,7 +55,7 @@ const BookingCard: React.FC<BookingCardProps> = ({
 
         <hr />
 
-        {/* Price Breakdown */}
+
         <div className="flex justify-between items-center">
           <span className="text-gray-600">Subtotal</span>
           <span className="font-semibold">₹{subtotal}</span>
@@ -74,13 +73,11 @@ const BookingCard: React.FC<BookingCardProps> = ({
         </div>
       </div>
 
-      {/* Confirm Button */}
+
       <button
         onClick={onSubmit}
         disabled={!isSlotSelected}
-        className="mt-6 w-full bg-gray-300 text-white font-bold py-3 rounded-lg transition-colors
-                   disabled:opacity-70 disabled:cursor-not-allowed
-                   enabled:bg-purple-600 enabled:hover:bg-purple-700"
+        className="mt-6 w-full bg-gray-300 text-white font-bold py-3 rounded-lg transition-colors disabled:opacity-70 disabled:cursor-not-allowed enabled:bg-purple-600 enabled:hover:bg-purple-700"
       >
         Confirm
       </button>

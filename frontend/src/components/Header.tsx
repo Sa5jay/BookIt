@@ -8,7 +8,9 @@ type HeaderProps = {
 };
 
 const Header: React.FC<HeaderProps> = ({ searchQuery, onSearchChange }) => {
-
+  // Check if the search props are provided.
+  // This lets us reuse the header on other pages (like checkout)
+  // without passing these props, and the search bar won't be interactive.
   const isSearchable = searchQuery !== undefined && onSearchChange !== undefined;
 
   return (
@@ -17,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ searchQuery, onSearchChange }) => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="shrink-0 flex items-center">
-            <span className="font-bold text-2xl text-gray-800">
+            <span className="font-bold text-xl sm:text-2xl text-gray-800">
               Highway
               <span className="text-gray-500">delite</span>
             </span>
